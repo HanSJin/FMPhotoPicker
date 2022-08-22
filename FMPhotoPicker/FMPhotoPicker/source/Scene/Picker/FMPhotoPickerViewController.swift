@@ -117,7 +117,9 @@ public class FMPhotoPickerViewController: UIViewController {
             let cancelAction = UIAlertAction(
                 title: config.strings["permission_button_cancel"],
                 style: .cancel,
-                handler: nil)
+                handler: { [weak self] _ in
+                    self?.dismiss(animated: true)
+                })
 
             Helper.showDialog(
                 in: self,
