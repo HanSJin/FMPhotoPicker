@@ -374,6 +374,8 @@ private extension FMPhotoPresenterViewController {
         NSLayoutConstraint.activate([
             backButton.leftAnchor.constraint(equalTo: menuContainer.leftAnchor, constant: 8),
             backButton.centerYAnchor.constraint(equalTo: menuContainer.centerYAnchor),
+            backButton.topAnchor.constraint(equalTo: menuContainer.topAnchor),
+            backButton.bottomAnchor.constraint(equalTo: menuContainer.bottomAnchor)
         ])
         
         let photoTitle = UILabel()
@@ -398,7 +400,9 @@ private extension FMPhotoPresenterViewController {
         NSLayoutConstraint.activate([
             doneButton.rightAnchor.constraint(equalTo: menuContainer.rightAnchor, constant: -16),
             doneButton.centerYAnchor.constraint(equalTo: menuContainer.centerYAnchor),
-            doneButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 40),
+            doneButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 45),
+            doneButton.topAnchor.constraint(equalTo: menuContainer.topAnchor),
+            doneButton.bottomAnchor.constraint(equalTo: menuContainer.bottomAnchor)
         ])
         
         let numberOfSelectedPhotoContainer = UIView()
