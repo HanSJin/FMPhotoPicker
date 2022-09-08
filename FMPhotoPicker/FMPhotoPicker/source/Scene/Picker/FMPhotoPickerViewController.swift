@@ -74,7 +74,7 @@ public class FMPhotoPickerViewController: UIViewController {
     
     public override func loadView() {
         view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         initializeViews()
         setupView()
     }
