@@ -11,3 +11,6 @@ FMPhotoPickerExample/FMPhotoPickerExample.xcodeproj/xcuserdata/
 *.perspectivev3
 !default.perspectivev3
 xcuserdata/
+
+## HanSJin
+.DS_Store 
