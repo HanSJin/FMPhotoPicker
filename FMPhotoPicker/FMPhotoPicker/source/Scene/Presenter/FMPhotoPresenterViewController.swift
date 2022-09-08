@@ -437,10 +437,10 @@ private extension FMPhotoPresenterViewController {
         selectedContainer.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(selectedContainer)
         NSLayoutConstraint.activate([
-            selectedContainer.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 16),
-            selectedContainer.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -8),
-            selectedContainer.widthAnchor.constraint(equalToConstant: 28),
-            selectedContainer.heightAnchor.constraint(equalToConstant: 28),
+            selectedContainer.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 6),
+            selectedContainer.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 2),
+            selectedContainer.widthAnchor.constraint(equalToConstant: 48),
+            selectedContainer.heightAnchor.constraint(equalToConstant: 48),
         ])
         
         let selectedIcon = UIImageView()
@@ -449,22 +449,21 @@ private extension FMPhotoPresenterViewController {
         selectedIcon.translatesAutoresizingMaskIntoConstraints = false
         selectedContainer.addSubview(selectedIcon)
         NSLayoutConstraint.activate([
-            selectedIcon.topAnchor.constraint(equalTo: selectedContainer.topAnchor),
-            selectedIcon.rightAnchor.constraint(equalTo: selectedContainer.rightAnchor),
-            selectedIcon.bottomAnchor.constraint(equalTo: selectedContainer.bottomAnchor),
-            selectedIcon.leftAnchor.constraint(equalTo: selectedContainer.leftAnchor),
+            selectedIcon.topAnchor.constraint(equalTo: selectedContainer.topAnchor, constant: 10),
+            selectedIcon.rightAnchor.constraint(equalTo: selectedContainer.rightAnchor, constant: -10),
+            selectedIcon.bottomAnchor.constraint(equalTo: selectedContainer.bottomAnchor, constant: -10),
+            selectedIcon.leftAnchor.constraint(equalTo: selectedContainer.leftAnchor, constant: 10),
         ])
         
         let selectedButton = UIButton(type: .custom)
         selectedButton.addTarget(self, action: #selector(onTapSelection(_:)), for: .touchUpInside)
-        
         selectedButton.translatesAutoresizingMaskIntoConstraints = false
         selectedContainer.addSubview(selectedButton)
         NSLayoutConstraint.activate([
-            selectedButton.topAnchor.constraint(equalTo: selectedContainer.topAnchor, constant: -10),
-            selectedButton.rightAnchor.constraint(equalTo: selectedContainer.rightAnchor, constant: -10),
-            selectedButton.bottomAnchor.constraint(equalTo: selectedContainer.bottomAnchor, constant: -10),
-            selectedButton.leftAnchor.constraint(equalTo: selectedContainer.leftAnchor, constant: -10),
+            selectedButton.topAnchor.constraint(equalTo: selectedContainer.topAnchor),
+            selectedButton.rightAnchor.constraint(equalTo: selectedContainer.rightAnchor),
+            selectedButton.bottomAnchor.constraint(equalTo: selectedContainer.bottomAnchor),
+            selectedButton.leftAnchor.constraint(equalTo: selectedContainer.leftAnchor),
         ])
         
         let selectedIndex = UILabel()
