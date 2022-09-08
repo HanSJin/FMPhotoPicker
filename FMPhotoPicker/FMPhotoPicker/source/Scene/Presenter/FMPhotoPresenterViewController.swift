@@ -86,7 +86,7 @@ class FMPhotoPresenterViewController: UIViewController {
     
     override func loadView() {
         view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = kBackgroundColor
         setupView()
     }
     
@@ -318,7 +318,7 @@ private extension FMPhotoPresenterViewController {
 //        private weak var unsafeAreaBottomView: UIView!
         
         let headerView = UIView()
-        headerView.backgroundColor = .white
+        headerView.backgroundColor = kBackgroundColor
         
         headerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(headerView)
@@ -367,12 +367,15 @@ private extension FMPhotoPresenterViewController {
         backButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -4)
         backButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: -4)
         backButton.addTarget(self, action: #selector(onTapClose(_:)), for: .touchUpInside)
+        backButton.tintColor = kBlackColor
         
         backButton.translatesAutoresizingMaskIntoConstraints = false
         menuContainer.addSubview(backButton)
         NSLayoutConstraint.activate([
             backButton.leftAnchor.constraint(equalTo: menuContainer.leftAnchor, constant: 8),
             backButton.centerYAnchor.constraint(equalTo: menuContainer.centerYAnchor),
+            backButton.topAnchor.constraint(equalTo: menuContainer.topAnchor),
+            backButton.bottomAnchor.constraint(equalTo: menuContainer.bottomAnchor)
         ])
         
         let photoTitle = UILabel()
@@ -397,7 +400,9 @@ private extension FMPhotoPresenterViewController {
         NSLayoutConstraint.activate([
             doneButton.rightAnchor.constraint(equalTo: menuContainer.rightAnchor, constant: -16),
             doneButton.centerYAnchor.constraint(equalTo: menuContainer.centerYAnchor),
-            doneButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 40),
+            doneButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 45),
+            doneButton.topAnchor.constraint(equalTo: menuContainer.topAnchor),
+            doneButton.bottomAnchor.constraint(equalTo: menuContainer.bottomAnchor)
         ])
         
         let numberOfSelectedPhotoContainer = UIView()
@@ -436,10 +441,10 @@ private extension FMPhotoPresenterViewController {
         selectedContainer.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(selectedContainer)
         NSLayoutConstraint.activate([
-            selectedContainer.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 16),
-            selectedContainer.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -8),
-            selectedContainer.widthAnchor.constraint(equalToConstant: 28),
-            selectedContainer.heightAnchor.constraint(equalToConstant: 28),
+            selectedContainer.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 6),
+            selectedContainer.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 2),
+            selectedContainer.widthAnchor.constraint(equalToConstant: 48),
+            selectedContainer.heightAnchor.constraint(equalToConstant: 48),
         ])
         
         let selectedIcon = UIImageView()
@@ -448,22 +453,21 @@ private extension FMPhotoPresenterViewController {
         selectedIcon.translatesAutoresizingMaskIntoConstraints = false
         selectedContainer.addSubview(selectedIcon)
         NSLayoutConstraint.activate([
-            selectedIcon.topAnchor.constraint(equalTo: selectedContainer.topAnchor),
-            selectedIcon.rightAnchor.constraint(equalTo: selectedContainer.rightAnchor),
-            selectedIcon.bottomAnchor.constraint(equalTo: selectedContainer.bottomAnchor),
-            selectedIcon.leftAnchor.constraint(equalTo: selectedContainer.leftAnchor),
+            selectedIcon.topAnchor.constraint(equalTo: selectedContainer.topAnchor, constant: 10),
+            selectedIcon.rightAnchor.constraint(equalTo: selectedContainer.rightAnchor, constant: -10),
+            selectedIcon.bottomAnchor.constraint(equalTo: selectedContainer.bottomAnchor, constant: -10),
+            selectedIcon.leftAnchor.constraint(equalTo: selectedContainer.leftAnchor, constant: 10),
         ])
         
         let selectedButton = UIButton(type: .custom)
         selectedButton.addTarget(self, action: #selector(onTapSelection(_:)), for: .touchUpInside)
-        
         selectedButton.translatesAutoresizingMaskIntoConstraints = false
         selectedContainer.addSubview(selectedButton)
         NSLayoutConstraint.activate([
-            selectedButton.topAnchor.constraint(equalTo: selectedContainer.topAnchor, constant: -10),
-            selectedButton.rightAnchor.constraint(equalTo: selectedContainer.rightAnchor, constant: -10),
-            selectedButton.bottomAnchor.constraint(equalTo: selectedContainer.bottomAnchor, constant: -10),
-            selectedButton.leftAnchor.constraint(equalTo: selectedContainer.leftAnchor, constant: -10),
+            selectedButton.topAnchor.constraint(equalTo: selectedContainer.topAnchor),
+            selectedButton.rightAnchor.constraint(equalTo: selectedContainer.rightAnchor),
+            selectedButton.bottomAnchor.constraint(equalTo: selectedContainer.bottomAnchor),
+            selectedButton.leftAnchor.constraint(equalTo: selectedContainer.leftAnchor),
         ])
         
         let selectedIndex = UILabel()
@@ -483,7 +487,7 @@ private extension FMPhotoPresenterViewController {
         
         let bottomViewContainer = UIView()
         self.bottomViewContainer = bottomViewContainer
-        bottomViewContainer.backgroundColor = .white
+        bottomViewContainer.backgroundColor = kBackgroundColor
         
         bottomViewContainer.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(bottomViewContainer)

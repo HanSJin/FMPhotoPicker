@@ -26,10 +26,9 @@ class FMPresenterEditMenuView: UIView {
         editButton.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         // editButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 80).isActive = true
         editButton.heightAnchor.constraint(greaterThanOrEqualToConstant: 40).isActive = true
-        editButton.setTitleColor(.black, for: .normal)
+        editButton.setTitleColor(kBlackColor, for: .normal)
         editButton.setTitle(config.strings["present_button_edit_image"], for: .normal)
         editButton.titleLabel?.font = UIFont.systemFont(ofSize: config.titleFontSize, weight: .bold)
-        
         editButton.addTarget(self, action: #selector(editButtonTarget), for: .touchUpInside)
         
         // top border view
@@ -43,7 +42,7 @@ class FMPresenterEditMenuView: UIView {
         topBorder.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         topBorder.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
-        self.backgroundColor = kTransparentBackgroundColor
+        backgroundColor = kBackgroundColor
     }
     
     @objc private func editButtonTarget() {

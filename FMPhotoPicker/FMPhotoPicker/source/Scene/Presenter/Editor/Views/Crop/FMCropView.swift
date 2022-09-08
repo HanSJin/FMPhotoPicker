@@ -131,7 +131,7 @@ class FMCropView: UIView {
         addSubview(cropBoxView)
         addSubview(cornersView)
         
-        self.backgroundColor = .white
+        self.backgroundColor = kBackgroundColor
     }
     
     required init?(coder aDecoder: NSCoder) {

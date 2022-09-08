@@ -27,6 +27,7 @@ public class FMPhotoPickerViewController: UIViewController {
     private weak var numberOfSelectedPhoto: UILabel!
     private weak var doneButton: UIButton!
     private weak var cancelButton: UIButton!
+    private weak var titleLabel: UILabel!
     
     // MARK: - Public
     public weak var delegate: FMPhotoPickerViewControllerDelegate? = nil
@@ -74,7 +75,7 @@ public class FMPhotoPickerViewController: UIViewController {
     
     public override func loadView() {
         view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = kBackgroundColor
         initializeViews()
         setupView()
     }
@@ -93,6 +94,7 @@ public class FMPhotoPickerViewController: UIViewController {
         self.cancelButton.titleLabel!.font = UIFont.boldSystemFont(ofSize: config.titleFontSize)
         self.doneButton.setTitle(config.strings["picker_button_select_done"], for: .normal)
         self.doneButton.titleLabel!.font = UIFont.boldSystemFont(ofSize: config.titleFontSize)
+        self.titleLabel.text = config.strings["picker_title"]
     }
     
     @objc private func onTapCancel(_ sender: Any) {
@@ -361,7 +363,7 @@ extension FMPhotoPickerViewController: UIViewControllerTransitioningDelegate {
 private extension FMPhotoPickerViewController {
     func initializeViews() {
         let headerView = UIView()
-        headerView.backgroundColor = .white
+        headerView.backgroundColor = kBackgroundColor
         
         headerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(headerView)
@@ -413,6 +415,17 @@ private extension FMPhotoPickerViewController {
         NSLayoutConstraint.activate([
             cancelButton.leftAnchor.constraint(equalTo: menuContainer.leftAnchor, constant: 16),
             cancelButton.centerYAnchor.constraint(equalTo: menuContainer.centerYAnchor),
+            cancelButton.topAnchor.constraint(equalTo: menuContainer.topAnchor),
+            cancelButton.bottomAnchor.constraint(equalTo: menuContainer.bottomAnchor)
+        ])
+        
+        let titleLabel = UILabel(frame: .zero)
+        self.titleLabel = titleLabel
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        menuContainer.addSubview(titleLabel)
+        NSLayoutConstraint.activate([
+            titleLabel.centerXAnchor.constraint(equalTo: menuContainer.centerXAnchor),
+            titleLabel.centerYAnchor.constraint(equalTo: menuContainer.centerYAnchor),
         ])
         
         let doneButton = UIButton(type: .system)
@@ -425,7 +438,9 @@ private extension FMPhotoPickerViewController {
         NSLayoutConstraint.activate([
             doneButton.rightAnchor.constraint(equalTo: menuContainer.rightAnchor, constant: -16),
             doneButton.centerYAnchor.constraint(equalTo: menuContainer.centerYAnchor),
-            doneButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 40),
+            doneButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 45),
+            doneButton.topAnchor.constraint(equalTo: menuContainer.topAnchor),
+            doneButton.bottomAnchor.constraint(equalTo: menuContainer.bottomAnchor)
         ])
         
         let numberOfSelectedPhotoContainer = UIView()

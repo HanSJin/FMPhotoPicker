@@ -61,6 +61,7 @@ public struct FMPhotoPickerConfig {
     public var titleFontSize: CGFloat = 17
     
     public var strings: [String: String] = [
+        "picker_title":                             "Select Photos",
         "picker_button_cancel":                     "Cancel",
         "picker_button_select_done":                "Done",
         "picker_warning_over_image_select_format":  "You can select maximum %d images",
