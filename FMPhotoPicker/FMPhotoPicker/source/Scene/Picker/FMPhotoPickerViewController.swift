@@ -11,13 +11,17 @@ import Photos
 
 // MARK: - Delegate protocol
 public protocol FMPhotoPickerViewControllerDelegate: class {
-    func fmPhotoPickerController(_ picker: FMPhotoPickerViewController, didFinishPickingPhotoWith photos: [UIImage])
+//    func fmPhotoPickerController(_ picker: FMPhotoPickerViewController, didFinishPickingPhotoWith photos: [UIImage])
     func fmPhotoPickerController(_ picker: FMPhotoPickerViewController, didFinishPickingPhotoWith assets: [PHAsset])
+    
+    func fmPhotoPickerController(_ picker: FMPhotoPickerViewController, didFinishPickingPhotoWith photos: [UIImage], locations: [CLLocation?])
 }
 
 public extension FMPhotoPickerViewControllerDelegate {
-    func fmPhotoPickerController(_ picker: FMPhotoPickerViewController, didFinishPickingPhotoWith photos: [UIImage]) {}
+//    func fmPhotoPickerController(_ picker: FMPhotoPickerViewController, didFinishPickingPhotoWith photos: [UIImage]) {}
     func fmPhotoPickerController(_ picker: FMPhotoPickerViewController, didFinishPickingPhotoWith assets: [PHAsset]) {}
+    
+    func fmPhotoPickerController(_ picker: FMPhotoPickerViewController, didFinishPickingPhotoWith photos: [UIImage], locations: [CLLocation?]) {}
 }
 
 public class FMPhotoPickerViewController: UIViewController {
@@ -173,6 +177,7 @@ public class FMPhotoPickerViewController: UIViewController {
         FMLoadingView.shared.show()
         
         var dict = [Int:UIImage]()
+        var locationDict = [Int:CLLocation?]()
         
         DispatchQueue.global(qos: .userInitiated).async {
             let multiTask = DispatchGroup()
@@ -181,15 +186,17 @@ public class FMPhotoPickerViewController: UIViewController {
                 element.requestFullSizePhoto(cropState: .edited, filterState: .edited) {
                     guard let image = $0 else { return }
                     dict[index] = image
+                    locationDict[index] = element.asset?.location
                     multiTask.leave()
                 }
             }
             multiTask.wait()
             
             let result = dict.sorted(by: { $0.key < $1.key }).map { $0.value }
+            let locationResult = locationDict.sorted(by: { $0.key < $1.key }).map { $0.value }
             DispatchQueue.main.async {
                 FMLoadingView.shared.hide()
-                self.delegate?.fmPhotoPickerController(self, didFinishPickingPhotoWith: result)
+                self.delegate?.fmPhotoPickerController(self, didFinishPickingPhotoWith: result, locations: locationResult)
             }
         }
     }
