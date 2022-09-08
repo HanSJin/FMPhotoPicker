@@ -86,7 +86,7 @@ class FMPhotoPresenterViewController: UIViewController {
     
     override func loadView() {
         view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = kBackgroundColor
         setupView()
     }
     
@@ -318,7 +318,7 @@ private extension FMPhotoPresenterViewController {
 //        private weak var unsafeAreaBottomView: UIView!
         
         let headerView = UIView()
-        headerView.backgroundColor = .white
+        headerView.backgroundColor = kBackgroundColor
         
         headerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(headerView)
@@ -367,6 +367,7 @@ private extension FMPhotoPresenterViewController {
         backButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -4)
         backButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: -4)
         backButton.addTarget(self, action: #selector(onTapClose(_:)), for: .touchUpInside)
+        backButton.tintColor = kBlackColor
         
         backButton.translatesAutoresizingMaskIntoConstraints = false
         menuContainer.addSubview(backButton)
@@ -483,7 +484,7 @@ private extension FMPhotoPresenterViewController {
         
         let bottomViewContainer = UIView()
         self.bottomViewContainer = bottomViewContainer
-        bottomViewContainer.backgroundColor = .white
+        bottomViewContainer.backgroundColor = kBackgroundColor
         
         bottomViewContainer.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(bottomViewContainer)

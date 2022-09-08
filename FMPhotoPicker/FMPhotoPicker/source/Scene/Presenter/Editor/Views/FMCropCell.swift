@@ -21,6 +21,7 @@ class FMCropCell: UICollectionViewCell {
         
         imageView.frame = CGRect(x: (frame.width - 24) / 2, y: 20, width: 24, height: 24)
         imageView.contentMode = .scaleAspectFit
+        imageView.tintColor = kBlackColor
         
         self.addSubview(imageView)
         self.addSubview(name)
@@ -48,6 +49,7 @@ class FMCropCell: UICollectionViewCell {
     
     public func setDeselected() {
         name.textColor = kGrayColor
+        imageView.tintColor = kBlackColor
     }
     
     required init?(coder aDecoder: NSCoder) {

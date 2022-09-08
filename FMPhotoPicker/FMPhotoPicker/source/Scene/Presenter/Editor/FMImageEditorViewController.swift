@@ -159,7 +159,7 @@ public class FMImageEditorViewController: UIViewController {
     
     public override func loadView() {
         view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = kBackgroundColor
         setupView()
     }
     
@@ -501,7 +501,7 @@ private extension FMImageEditorViewController {
     func setupView() {
         let headerView = UIView()
         self.headerView = headerView
-        headerView.backgroundColor = .white
+        headerView.backgroundColor = kBackgroundColor
         
         headerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(headerView)
@@ -564,7 +564,7 @@ private extension FMImageEditorViewController {
         
         let bottomViewContainer = UIView()
         self.bottomViewContainer = bottomViewContainer
-        bottomViewContainer.backgroundColor = .white
+        bottomViewContainer.backgroundColor = kBackgroundColor
         
         bottomViewContainer.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(bottomViewContainer)
@@ -613,7 +613,7 @@ private extension FMImageEditorViewController {
         
         let subMenuContainer = UIView()
         self.subMenuContainer = subMenuContainer
-        subMenuContainer.backgroundColor = .white
+        subMenuContainer.backgroundColor = kBackgroundColor
         
         subMenuContainer.translatesAutoresizingMaskIntoConstraints = false
         bottomViewContainer.addSubview(subMenuContainer)
