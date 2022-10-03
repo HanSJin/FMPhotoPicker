@@ -143,10 +143,12 @@ public class FMPhotoPickerViewController: UIViewController {
         self.dataSource = FMPhotosDataSource(photoAssets: fmPhotoAssets)
         
         if self.dataSource.numberOfPhotos > 0 {
-            self.imageCollectionView.reloadData()
-            self.imageCollectionView.selectItem(at: IndexPath(row: self.dataSource.numberOfPhotos - 1, section: 0),
-                                                animated: false,
-                                                scrollPosition: .bottom)
+            DispatchQueue.main.async {
+                self.imageCollectionView.reloadData()
+                self.imageCollectionView.selectItem(at: IndexPath(row: self.dataSource.numberOfPhotos - 1, section: 0),
+                                                    animated: false,
+                                                    scrollPosition: .bottom)
+            }
         }
     }
     
