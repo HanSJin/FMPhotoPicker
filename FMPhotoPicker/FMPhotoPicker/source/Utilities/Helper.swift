@@ -142,11 +142,17 @@ class Helper: NSObject {
         fetchOptions.includeAssetSourceTypes = [.typeUserLibrary, .typeCloudShared, .typeiTunesSynced]
         
         // Default sort is modificationDate
-        // fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "burstIdentifier", ascending: true)]
+//        fetchOptions.sortDescriptors = [
+//            NSSortDescriptor(key: "creationDate", ascending: true),
+//            NSSortDescriptor(key: "modificationDate", ascending: true)
+//        ]
         
         fetchOptions.predicate = NSPredicate(format: "mediaType IN %@", allowMediaTypes.map( { $0.value() }))
         
-        let fetchResult = PHAsset.fetchAssets(with: fetchOptions)
+//        let fetchResult = PHAsset.fetchAssets(with: fetchOptions)
+        let userLibrary = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumUserLibrary, options: nil).firstObject
+        let fetchResult = PHAsset.fetchAssets(in: userLibrary!, options: fetchOptions)
         
         guard fetchResult.count > 0 else { return [] }
         
