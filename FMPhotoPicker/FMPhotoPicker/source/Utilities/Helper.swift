@@ -142,11 +142,11 @@ class Helper: NSObject {
         fetchOptions.includeAssetSourceTypes = [.typeUserLibrary, .typeCloudShared, .typeiTunesSynced]
         
         // Default sort is modificationDate
-        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "burstIdentifier", ascending: true)]
-//        fetchOptions.sortDescriptors = [
-//            NSSortDescriptor(key: "creationDate", ascending: true),
-//            NSSortDescriptor(key: "modificationDate", ascending: true)
-//        ]
+        fetchOptions.sortDescriptors = [
+            NSSortDescriptor(key: "creationDate", ascending: true),
+//            NSSortDescriptor(key: "modificationDate", ascending: true),
+//            NSSortDescriptor(key: "burstIdentifier", ascending: true)
+        ]
         
         fetchOptions.predicate = NSPredicate(format: "mediaType IN %@", allowMediaTypes.map( { $0.value() }))
         
