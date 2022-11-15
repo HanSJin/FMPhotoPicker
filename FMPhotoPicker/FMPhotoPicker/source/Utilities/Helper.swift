@@ -143,7 +143,7 @@ class Helper: NSObject {
         
         // Default sort is modificationDate
         fetchOptions.sortDescriptors = [
-            NSSortDescriptor(key: "creationDate", ascending: true),
+//            NSSortDescriptor(key: "creationDate", ascending: false),
 //            NSSortDescriptor(key: "modificationDate", ascending: true),
 //            NSSortDescriptor(key: "burstIdentifier", ascending: true)
         ]
